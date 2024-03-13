@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { SelectProps, Box, Button } from '@chakra-ui/react';
-import { fetchLanguages } from '../api/apiClient';
+import { getMethod } from '../api/apiClient';
 import { END_POINT } from '../api/endPoints';
 
 const LanguageSelector: React.FC = () => {
@@ -12,7 +12,7 @@ const LanguageSelector: React.FC = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await fetchLanguages(END_POINT + '/lang');
+                const data = await getMethod(END_POINT + '/lang');
                 setLanguages(data.data);
             } catch (error) {
                 console.error('Error fetching languages:', error);
@@ -35,7 +35,7 @@ const LanguageSelector: React.FC = () => {
     };
 
     return (
-        <Box bg='#f3fbff' w='15rem' display='flex' flexDirection='column'>
+        <Box bg='#DDE6ED' w='15rem' display='flex' flexDirection='column'>
             <Button value={selectedLanguage} onClick={handleChange} m='4' bg='white'>
                 {selectedButtonValue || 'Select Language'}
             </Button>

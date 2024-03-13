@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Button,  SelectProps} from '@chakra-ui/react';
-import { fetchLanguages } from '../api/apiClient';
+import { getMethod } from '../api/apiClient';
 import { END_POINT } from '../api/endPoints';
 
 const CurrencySelector: React.FC = () => {
@@ -13,7 +13,7 @@ const CurrencySelector: React.FC = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await fetchLanguages(END_POINT + '/fiat-currency');
+                const data = await getMethod(END_POINT + '/fiat-currency');
 
                 setCurrency(data.data.currencies);
 
@@ -35,7 +35,7 @@ const CurrencySelector: React.FC = () => {
     };
 
     return (
-        <Box bg='#f3fbff' w='15rem' display='flex' flexDirection='column'>
+        <Box bg='#DDE6ED' w='15rem' display='flex' flexDirection='column'>
         <Button value={selecteCurrency} onClick={handleChange} m='4'  bg='white'>
             {selectedButtonValue || 'Select Language'}
         </Button>

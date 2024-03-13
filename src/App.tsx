@@ -3,7 +3,7 @@ import './App.css'
 import CurrencySelector from './components/CurrencySelector'
 import LanguageSelector from './components/LanguageSelector'
 import Banner from './components/Banner'
-// import Demo from './components/demo'
+import NewsLetter from './components/Newsletter'
 
 function App() {
   
@@ -13,8 +13,11 @@ function App() {
     <LanguageSelector></LanguageSelector>
     <br></br>
     <CurrencySelector></CurrencySelector>
+    <br></br>
       <Banner></Banner>
-      {/* <Demo></Demo> */}
+    <br></br>
+      <NewsLetter></NewsLetter>
+      
     </>
   )
 }
