@@ -4,6 +4,7 @@ import CurrencySelector from './components/CurrencySelector'
 import LanguageSelector from './components/LanguageSelector'
 import Banner from './components/Banner'
 import NewsLetter from './components/Newsletter'
+import CoinTable from  './components/CoinPriceTable'
 
 function App() {
   
@@ -14,10 +15,11 @@ function App() {
     <br></br>
     <CurrencySelector></CurrencySelector>
     <br></br>
-      <Banner></Banner>
     <br></br>
+      <CoinTable></CoinTable>
       <NewsLetter></NewsLetter>
-      
+      <br></br>
+      <Banner></Banner>
     </>
   )
 }
