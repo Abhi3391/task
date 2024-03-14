@@ -11,10 +11,10 @@ export const getMethod = async (LANGUAGE: string) => {
   }
 };
 
-export const postMethod = async (LANGUAGE: string) => {
-    
+export const postMethod = async (LANGUAGE: string , email:string) => {
+    console.log("post",LANGUAGE,email)
   try {
-    const response = await axios.post(LANGUAGE);
+    const response = await axios.post(LANGUAGE,{email});
     return response.data;
   } catch (error) {
     console.error('Error in posting :', error);

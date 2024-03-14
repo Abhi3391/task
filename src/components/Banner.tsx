@@ -39,11 +39,13 @@ const Banner: React.FC = () => {
   };
 
   const getImageUrl = () => {
+    
     if (banners.length === 0) {
       return ''; 
     }
   
     const banner = banners[currentIndex];
+
     if (isMobile) {
       return banner.mobile_url || banner.url; 
     } else if (isTablet) {
