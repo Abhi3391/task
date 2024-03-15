@@ -15,7 +15,7 @@ const CurrencySelector: React.FC = () => {
             try {
                 const data = await axios.get(CURRENCY_SELECTOR);
 
-                setCurrency(data.data.currencies);
+                setCurrency(data.data.data.currencies);
 
             } catch (error) {
                 console.error('Error fetching languages:', error);

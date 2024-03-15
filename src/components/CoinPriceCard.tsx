@@ -41,8 +41,8 @@ const CoinCard: React.FunctionComponent = () => {
 
                 if (coinArray.includes(item.symbol)) {
                     return (
-                        <Flex bg='#F0ECE3' borderRadius='20'>
-                            <Box key={index} justifyContent='space-between'   p='5' w='10rem'>
+                        <Flex key={index} bg='#F0ECE3' borderRadius='20'>
+                            <Box  justifyContent='space-between'   p='5' w='10rem'>
                                 
                                 <Flex>
                                     <Text color='#161D6F' fontSize='2xl'>{item.keywords[0]}</Text>

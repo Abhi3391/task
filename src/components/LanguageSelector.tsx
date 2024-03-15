@@ -13,7 +13,8 @@ const LanguageSelector: React.FC = () => {
         const fetchData = async () => {
             try {
                 const data = await axios.get(LANGUAGE_SELECTOR);
-                setLanguages(data.data);
+                // console.log("lang",data.data.data)
+                setLanguages(data.data.data);
             } catch (error) {
                 console.error('Error fetching languages:', error);
             }
