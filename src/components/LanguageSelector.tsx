@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { SelectProps, Box, Button } from '@chakra-ui/react';
-import { getMethod } from '../api/apiClient';
-import { END_POINT } from '../api/endPoints';
+import { Box, Button } from '@chakra-ui/react';
+import { LANGUAGE_SELECTOR } from '../api/endPoints';
+import axios from 'axios';
 
 const LanguageSelector: React.FC = () => {
     const [languages, setLanguages] = useState<any[]>([]);
@@ -12,7 +12,7 @@ const LanguageSelector: React.FC = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await getMethod(END_POINT + '/lang');
+                const data = await axios.get(LANGUAGE_SELECTOR);
                 setLanguages(data.data);
             } catch (error) {
                 console.error('Error fetching languages:', error);

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Button,  SelectProps} from '@chakra-ui/react';
-import { getMethod } from '../api/apiClient';
-import { END_POINT } from '../api/endPoints';
+import { Box, Button } from '@chakra-ui/react';
+import { CURRENCY_SELECTOR } from '../api/endPoints';
+import axios from 'axios';
 
 const CurrencySelector: React.FC = () => {
     const [currency, setCurrency] = useState<any[]>([]);
@@ -13,7 +13,7 @@ const CurrencySelector: React.FC = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await getMethod(END_POINT + '/fiat-currency');
+                const data = await axios.get(CURRENCY_SELECTOR);
 
                 setCurrency(data.data.currencies);
 
@@ -37,7 +37,7 @@ const CurrencySelector: React.FC = () => {
     return (
         <Box bg='#DDE6ED' w='15rem' display='flex' flexDirection='column'>
         <Button value={selecteCurrency} onClick={handleChange} m='4'  bg='white'>
-            {selectedButtonValue || 'Select Language'}
+            {selectedButtonValue || 'Select Currency'}
         </Button>
 
         {isSelect ?

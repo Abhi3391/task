@@ -2,9 +2,10 @@
 import React, { useState } from 'react';
 import { Box, Image, FormControl, FormLabel, Text, Input, Flex, Link, Button, Heading, Spacer, FormErrorMessage } from '@chakra-ui/react';
 import { postMethod } from '../api/apiClient';
-import { END_POINT } from '../api/endPoints';
+import { NEWS_LETTER } from '../api/endPoints';
 import photo from '../assets/photo1.jpeg';
 import { isEmail } from 'validator';
+import axios from 'axios';
 
 const NewsLetter: React.FC = () => {
   const [email, setEmail] = useState<string>('');
@@ -23,10 +24,10 @@ const NewsLetter: React.FC = () => {
     }
 
     try {
-      const data = await postMethod(END_POINT + '/news-subscription', email);
+      const data = await axios.post(NEWS_LETTER, {email});
       console.log('Data:', data);
-      console.log('Data:1', data.statusCode);
-      setStatus(data.statusCode)
+      console.log('Data:1', data.data.statusCode);
+      setStatus(data.data.statusCode)
 
     } catch (error) {
       console.error('Error fetching news:', error);

@@ -2,6 +2,7 @@ import { Box, Text, Table, Thead, Tbody, Tr, Th, Td, TableCaption, TableContaine
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { COIN_TABLE } from '../api/endPoints';
+import SplineChart from './SpChart';
 
 interface ICoinData {
     keywords: string[];
@@ -30,7 +31,7 @@ const CoinTable: React.FC = () => {
                     headers: { 'X-API-KEY': 'BitdeltaExchange' }
                 });
                 const coinData: ICoinData[] = response.data.data?.spot ?? [];
-                console.log(coinData)
+                // console.log(coinData)
                 setCoins(coinData);
             } catch (error) {
                 console.error('Error fetching coin data:', error);
@@ -52,9 +53,10 @@ const CoinTable: React.FC = () => {
                             <Th>Low:</Th>
                             <Th>Change:</Th>
                             <Th>Circulating Supply:</Th>
+                            <Th>24H Chart</Th>
                         </Tr>
                     </Thead>
-                    <Tbody>
+                    <Tbody bg='#F6F6F6'>
                         {coins?.map((coin, index) => (
                             <Tr key={index}>
                                 <Td>
@@ -63,15 +65,16 @@ const CoinTable: React.FC = () => {
                                         <Box pl='2' fontSize='sm' color='gray'>{coin.currency1}</Box>
                                     </Flex>
                                 </Td>
-                                <Td><Box color={coin.pricing[0] >= 0 ? 'green' : 'red'}>$ {coin.pricing[0]}</Box></Td>
+                                <Td><Box color={coin.change >= 0 ? 'green' : 'red'}>$ {coin.pricing[0]}</Box></Td>
                                 <Td>$ {coin.high}</Td>
                                 <Td>$ {coin.low}</Td>
                                 <Td>
                                     <Box color={coin.change >= 0 ? 'green' : 'red'}>
-                                        $ {(coin.change / 10).toFixed(2)}
+                                        {(coin.change / 10).toFixed(2)}%
                                     </Box>
                                 </Td>
                                 <Td>{formatNumberToLakhs(coin.volume)}</Td>
+                                <Td  ><Box m={'12px'} h={'40px'} ><SplineChart data={coin.pricing} index={`${coin.currency1}${index}`} change={coin.change} /></Box></Td>
                             </Tr>
                         ))}
                     </Tbody>

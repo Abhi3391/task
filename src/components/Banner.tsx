@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Flex, Image, IconButton, useMediaQuery } from '@chakra-ui/react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { getMethod } from '../api/apiClient';
-import { END_POINT } from '../api/endPoints';
+import { BANNER } from '../api/endPoints';
 
 interface BannerProps {
   id: number;
@@ -20,7 +20,7 @@ const Banner: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await getMethod(END_POINT + '/general');
+        const response = await getMethod(BANNER);
         setBanners(response.data.banners);
       } catch (error) {
         console.error('Error fetching banners:', error);
