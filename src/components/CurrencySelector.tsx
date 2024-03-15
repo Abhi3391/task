@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Button } from '@chakra-ui/react';
+import { Box, Button,Icon } from '@chakra-ui/react';
+import { ChevronDownIcon,ChevronUpIcon } from '@chakra-ui/icons'
 import { CURRENCY_SELECTOR } from '../api/endPoints';
 import axios from 'axios';
 
@@ -35,9 +36,9 @@ const CurrencySelector: React.FC = () => {
     };
 
     return (
-        <Box bg='#DDE6ED' w='15rem' display='flex' flexDirection='column'>
-        <Button value={selecteCurrency} onClick={handleChange} m='4'  bg='white'>
-            {selectedButtonValue || 'Select Currency'}
+        <Box bg='#DDE6ED' w='15rem' display='flex' flexDirection='column' borderRadius='10' m='10'>
+        <Button value={selecteCurrency} onClick={handleChange} m='4' justifyContent='space-evenly' bg='white'>
+            {selectedButtonValue || 'Select Currency'} <Icon as={isSelect?ChevronDownIcon:ChevronUpIcon} />
         </Button>
 
         {isSelect ?

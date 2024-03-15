@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Button } from '@chakra-ui/react';
+import { Box, Button,Icon } from '@chakra-ui/react';
+import { ChevronDownIcon,ChevronUpIcon } from '@chakra-ui/icons'
 import { LANGUAGE_SELECTOR } from '../api/endPoints';
 import axios from 'axios';
 
@@ -36,9 +37,9 @@ const LanguageSelector: React.FC = () => {
     };
 
     return (
-        <Box bg='#DDE6ED' w='15rem' display='flex' flexDirection='column'>
-            <Button value={selectedLanguage} onClick={handleChange} m='4' bg='white'>
-                {selectedButtonValue || 'Select Language'}
+        <Box bg='#DDE6ED' w='15rem' display='flex' flexDirection='column' borderRadius='10' m='10'>
+            <Button value={selectedLanguage} onClick={handleChange} m='4' bg='white' justifyContent='space-evenly'>
+                {selectedButtonValue || 'Select Language'} <Icon as={isSelect?ChevronDownIcon:ChevronUpIcon} />
             </Button>
 
             {isSelect ?
